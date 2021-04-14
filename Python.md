@@ -333,3 +333,26 @@ Python
   2. 打开Xming， 配置的DISPLAY变量要写Xshell的隧道中的变量的`.`之前的数字。（我配置的时候是10）
   3. 用Xshell键入`python plot.py`进行绘图
   4. 结果会弹出一个Xming的小窗口，然后图像从雪花点慢慢变成绘制的图像。过程及其满，需要十几分钟。
+  
+* 查看pandas.read_csv()返回的结果
+    * `df.head(10)`查看前10行
+    * `df.describe()` 总结数据
+    * `df.columns` 查看所有的键
+    * 根据某一键筛选值
+        ```python
+              image_ids = train_df['image_id'].unique()
+              valid_ids = image_ids[-665:]
+              train_ids = image_ids[:-665]
+              valid_df = train_df[train_df['image_id'].isin(valid_ids)]
+              train_df = train_df[train_df['image_id'].isin(train_ids)]
+        ```
+    
+* 处理pandas数据
+    ```python
+      train_df['bbox'].apply(lambda x: expand_bbox(x))
+    ```
+    对数据框内每一个元素进行处理
+    
+* 转化为torch tensor的格式
+    `torch.as_tensor(np_data, dtype=torch.float32)`
+    

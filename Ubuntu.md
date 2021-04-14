@@ -152,5 +152,54 @@ Ubuntu常用
   `:wq`         //按【:wq】 保存后离开
   `:wq!`        //按【:wq!】 强制保存后离开
   
- * 通过URL下载
+* 通过URL下载
  `wget your_url`
+
+
+* 打印一个lib的信息和它的依赖和被依赖
+  `pip show torchvision`
+  
+* 安装opencv
+    `pip install opencv-python`
+    
+* kaggle报错“401 - Unauthorized”
+    重新下载一个新的kaggle token放在.kaggle文件夹中
+
+* nginx操作
+  `service nginx reload`
+  `service nginx restart`
+  `service nginx start`
+  `service nginx status`
+
+* 部署项目-》配置nginx
+  * 下载并build项目到/var/www/
+  * 修改`vim /etc/nginx/sites-available/default`
+  * 重启nginx
+  
+  经测试，使用create-react-app创建的项目，在引入静态数据文件时，显示正常
+  引入方式：`axios.get('data/data.json')`
+  data位置：`/public/data/data.json`
+  package.json中的`homepage`配置：None
+
+    ---
+部署项目时打包静态文件路径的问题
+* 用`create-react-app`创建的项目，要请求的静态数据要放在`public`文件夹中
+
+    经测试，使用create-react-app创建的项目，在引入静态数据文件时，显示正常
+    引入方式：`axios.get('data/data.json')`
+    data位置：`/public/data/data.json`
+    package.json中的`homepage`配置：None
+
+
+* 用`webpack`打包的项目
+    成功取到数据文件
+    方式：其实很简单，就是要明确一个理解：
+    项目ip：131.123.39.100的`root`，就是 项目的dist文件夹
+    这个在nginx的配置文件中也指定过
+    所以在代码中就这样写：
+    ```js
+      axios.get('statics/data.json')
+      .then()
+      .then()
+    ```
+    然后把`data.json`放在`dist/statics/`下即可

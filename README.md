@@ -5,6 +5,8 @@ Study Manual
 
 技术栈主要围绕前端js+后端PHP+mysql的MVC架构展开
 
+后期已加入深度学习模块，方向CV+GAN
+
 欢迎学习和交流。
 
 个人邮箱：haywardryan@foxmail.com
